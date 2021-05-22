@@ -10,7 +10,7 @@ namespace PEExam
     public partial class Main : Form
     {
 
-        public int PointsAvaiLabel = 10, DaysAvailable = 100, TiringPointsAvaiLabel = 0;
+        public int PointsAvaiLabel = 10, DaysAvailable = 50, TiringPointsAvaiLabel = 0;
 
         public static int FlexMainIndex = 0, FlexExtraIndex = 0, PowerIndex = 0, SpeedIndex = 0, TotalScore = 0;
 

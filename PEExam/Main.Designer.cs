@@ -119,6 +119,7 @@ namespace PEExam
             this.TiringPointsAvaiLabel_Label.Size = new System.Drawing.Size(92, 17);
             this.TiringPointsAvaiLabel_Label.TabIndex = 6;
             this.TiringPointsAvaiLabel_Label.Text = "累计可用疲劳度";
+            this.TiringPointsAvaiLabel_Label.Visible = false;
             // 
             // ConfigExam_Button
             // 

@@ -10,9 +10,11 @@ namespace PEExam
 {
     public partial class Select : Form
     {
+        public bool CanClose = false;
 
         protected override void OnClosing(CancelEventArgs e)
         {
+            if(!CanClose)
             e.Cancel = true; //取消关闭操作
         }
 
@@ -37,6 +39,7 @@ namespace PEExam
             Main.FlexExtraIndex = SelectFlexExtra_Dropdown.SelectedIndex + 1;
             Main.PowerIndex = SelectPower_Dropdown.SelectedIndex + 1;
             Main.SpeedIndex = SelectSpeed_Dropdown.SelectedIndex + 1;
+            CanClose = true;
             this.Close();
         }
 

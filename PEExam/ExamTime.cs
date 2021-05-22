@@ -406,6 +406,9 @@ namespace PEExam
                         Main.TotalScore += 7;
                     break;
             }
+
+            MessageBox.Show(Main.TotalScore.ToString());
+            this.Close();
         }
     }
 }
