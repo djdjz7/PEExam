@@ -46,7 +46,6 @@ namespace PEExam
             this.PowerPoints_Updown = new System.Windows.Forms.NumericUpDown();
             this.SpeedPoints_Updown = new System.Windows.Forms.NumericUpDown();
             this.ShowPossibilities_Button = new System.Windows.Forms.Button();
-            this.ExamQuickTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.FlexMainPoints_Updown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FlexExtraPoints_Updown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PowerPoints_Updown)).BeginInit();
@@ -110,6 +109,7 @@ namespace PEExam
             this.TiringPointsAvaiLabel_Num.Size = new System.Drawing.Size(42, 46);
             this.TiringPointsAvaiLabel_Num.TabIndex = 5;
             this.TiringPointsAvaiLabel_Num.Text = "0";
+            this.TiringPointsAvaiLabel_Num.Visible = false;
             // 
             // TiringPointsAvaiLabel_Label
             // 
@@ -212,22 +212,11 @@ namespace PEExam
             this.ShowPossibilities_Button.UseVisualStyleBackColor = true;
             this.ShowPossibilities_Button.Click += new System.EventHandler(this.ShowPossibilities_Button_Click);
             // 
-            // ExamQuickTest
-            // 
-            this.ExamQuickTest.Location = new System.Drawing.Point(365, 194);
-            this.ExamQuickTest.Name = "ExamQuickTest";
-            this.ExamQuickTest.Size = new System.Drawing.Size(75, 23);
-            this.ExamQuickTest.TabIndex = 17;
-            this.ExamQuickTest.Text = "exam";
-            this.ExamQuickTest.UseVisualStyleBackColor = true;
-            this.ExamQuickTest.Click += new System.EventHandler(this.ExamQuickTest_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 260);
-            this.Controls.Add(this.ExamQuickTest);
             this.Controls.Add(this.ShowPossibilities_Button);
             this.Controls.Add(this.SpeedPoints_Updown);
             this.Controls.Add(this.PowerPoints_Updown);
@@ -246,7 +235,7 @@ namespace PEExam
             this.Controls.Add(this.PointsAvaiLabel_Label);
             this.Controls.Add(this.Train_Button);
             this.Name = "Main";
-            this.Text = "Form1";
+            this.Text = "PEExams";
             ((System.ComponentModel.ISupportInitialize)(this.FlexMainPoints_Updown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FlexExtraPoints_Updown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PowerPoints_Updown)).EndInit();
@@ -275,7 +264,6 @@ namespace PEExam
         private System.Windows.Forms.NumericUpDown PowerPoints_Updown;
         private System.Windows.Forms.NumericUpDown SpeedPoints_Updown;
         private System.Windows.Forms.Button ShowPossibilities_Button;
-        private System.Windows.Forms.Button ExamQuickTest;
     }
 }
 

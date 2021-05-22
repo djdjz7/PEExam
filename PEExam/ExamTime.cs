@@ -6,9 +6,6 @@ namespace PEExam
 {
     public partial class ExamTime : Form
     {
-
-        public static int TotalScore = 0;
-
         public bool TestRopeSkipping()
         {
             int gen = -1;
@@ -108,8 +105,6 @@ namespace PEExam
             for (int i = 1; i <= 2; i++)
             {
                 gen = Main.random.Next(0, 1000);
-                MessageBox.Show(gen.ToString());
-                MessageBox.Show((Main.Player_Possibilities.Football * 10).ToString());
                 Status_Label.Text = "足球射门 第 " + i.ToString() + " 次尝试";
                 Application.DoEvents();
                 Thread.Sleep(10000);
@@ -135,6 +130,162 @@ namespace PEExam
             return false;
         }
 
+        public bool TestPullUps()
+        {
+            int gen = -1;
+            for (int i = 1; i <= 2; i++)
+            {
+                gen = Main.random.Next(0, 1000);
+                Status_Label.Text = "引体向上 第 " + i.ToString() + " 次尝试";
+                Application.DoEvents();
+                Thread.Sleep(10000);
+                if (gen <= Main.Player_Possibilities.PullUps * 10)
+                {
+                    Status_Label.Text = "引体向上通过";
+                    Status_Bar.Value += 15;
+                    Application.DoEvents();
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    Status_Bar.Value += 7;
+                    Application.DoEvents();
+                    continue;
+                }
+
+            }
+            Status_Label.Text = "引体向上未通过";
+            Application.DoEvents();
+            Thread.Sleep(1000);
+            return false;
+        }
+
+        public bool TestSolidBall()
+        {
+            int gen = -1;
+            for (int i = 1; i <= 2; i++)
+            {
+                gen = Main.random.Next(0, 1000);
+                Status_Label.Text = "实心球 第 " + i.ToString() + " 次尝试";
+                Application.DoEvents();
+                Thread.Sleep(10000);
+                if (gen <= Main.Player_Possibilities.Football * 10)
+                {
+                    Status_Label.Text = "实心球通过";
+                    Status_Bar.Value += 15;
+                    Application.DoEvents();
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    Status_Bar.Value += 7;
+                    Application.DoEvents();
+                    continue;
+                }
+
+            }
+            Status_Label.Text = "实心球未通过";
+            Application.DoEvents();
+            Thread.Sleep(1000);
+            return false;
+        }
+
+        public bool TestRun1000m()
+        {
+            int gen = -1;
+            for (int i = 1; i <= 2; i++)
+            {
+                gen = Main.random.Next(0, 1000);
+                Status_Label.Text = "1000m跑步 第 " + i.ToString() + " 次尝试";
+                Application.DoEvents();
+                Thread.Sleep(10000);
+                if (gen <= Main.Player_Possibilities.Run1000m * 10)
+                {
+                    Status_Label.Text = "1000m跑步通过";
+                    Status_Bar.Value += 15;
+                    Application.DoEvents();
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    Status_Bar.Value += 7;
+                    Application.DoEvents();
+                    continue;
+                }
+
+            }
+            Status_Label.Text = "1000m跑步未通过";
+            Application.DoEvents();
+            Thread.Sleep(1000);
+            return false;
+        }
+
+        public bool TestRun800m()
+        {
+            int gen = -1;
+            for (int i = 1; i <= 2; i++)
+            {
+                gen = Main.random.Next(0, 1000);
+                Status_Label.Text = "800m跑步 第 " + i.ToString() + " 次尝试";
+                Application.DoEvents();
+                Thread.Sleep(10000);
+                if (gen <= Main.Player_Possibilities.Run800m * 10)
+                {
+                    Status_Label.Text = "800m跑步通过";
+                    Status_Bar.Value += 15;
+                    Application.DoEvents();
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    Status_Bar.Value += 7;
+                    Application.DoEvents();
+                    continue;
+                }
+
+            }
+            Status_Label.Text = "800m跑步未通过";
+            Application.DoEvents();
+            Thread.Sleep(1000);
+            return false;
+        }
+
+        public bool TestSwim50m()
+        {
+            int gen = -1;
+            for (int i = 1; i <= 2; i++)
+            {
+                gen = Main.random.Next(0, 1000);
+                Status_Label.Text = "50m游泳 第 " + i.ToString() + " 次尝试";
+                Application.DoEvents();
+                Thread.Sleep(10000);
+                if (gen <= Main.Player_Possibilities.Swim50m * 10)
+                {
+                    Status_Label.Text = "50m游泳通过";
+                    Status_Bar.Value += 15;
+                    Application.DoEvents();
+                    Thread.Sleep(1000);
+                    return true;
+                }
+                else
+                {
+                    Status_Bar.Value += 7;
+                    Application.DoEvents();
+                    continue;
+                }
+
+            }
+            Status_Label.Text = "50m游泳未通过";
+            Application.DoEvents();
+            Thread.Sleep(1000);
+            return false;
+        }
+
+
         public ExamTime()
         {
             InitializeComponent();
@@ -142,6 +293,8 @@ namespace PEExam
 
         private void StartExam_Button_Click(object sender, EventArgs e)
         {
+            Main.TotalScore = 0;
+
             StartExam_Button.Text = "测试中";
             StartExam_Button.Enabled = false;
 
@@ -150,7 +303,7 @@ namespace PEExam
                 case 1:
                     if (TestRopeSkipping())
                     {
-                        TotalScore += 10;
+                        Main.TotalScore += 10;
                         Main.NeedToTestExtra = false;
                     }
                     else
@@ -159,7 +312,7 @@ namespace PEExam
                 case 2:
                     if (TestPushUps())
                     {
-                        TotalScore += 10;
+                        Main.TotalScore += 10;
                         Main.NeedToTestExtra = false;
                     }
                     else
@@ -168,7 +321,7 @@ namespace PEExam
                 case 3:
                     if (TestBasketball())
                     {
-                        TotalScore += 10;
+                        Main.TotalScore += 10;
                         Main.NeedToTestExtra = false;
                     }
                     else
@@ -177,7 +330,7 @@ namespace PEExam
                 case 4:
                     if (TestFootball())
                     {
-                        TotalScore += 10;
+                        Main.TotalScore += 10;
                         Main.NeedToTestExtra = false;
                     }
                     else
@@ -191,29 +344,67 @@ namespace PEExam
                 {
                     case 1:
                         if (TestRopeSkipping())
-                            TotalScore += 10;
+                            Main.TotalScore += 10;
                         else
-                            TotalScore += 7;
+                            Main.TotalScore += 7;
                         break;
                     case 2:
                         if (TestPushUps())
-                            TotalScore += 10;
+                            Main.TotalScore += 10;
                         else
-                            TotalScore += 7;
+                            Main.TotalScore += 7;
                         break;
                     case 3:
                         if (TestBasketball())
-                            TotalScore += 10;
+                            Main.TotalScore += 10;
                         else
-                            TotalScore += 7;
+                            Main.TotalScore += 7;
                         break;
                     case 4:
                         if (TestFootball())
-                            TotalScore += 10;
+                            Main.TotalScore += 10;
                         else
-                            TotalScore += 7;
+                            Main.TotalScore += 7;
                         break;
                 }
+            }
+
+            switch (Main.PowerIndex)
+            {
+                case 1:
+                    if (TestPullUps())
+                        Main.TotalScore += 10;
+                    else
+                        Main.TotalScore += 7;
+                    break;
+                case 2:
+                    if (TestSolidBall())
+                        Main.TotalScore += 10;
+                    else
+                        Main.TotalScore += 7;
+                    break;
+            }
+
+            switch (Main.SpeedIndex)
+            {
+                case 1:
+                    if (TestRun1000m())
+                        Main.TotalScore += 10;
+                    else
+                        Main.TotalScore += 7;
+                    break;
+                case 2:
+                    if (TestRun800m())
+                        Main.TotalScore += 10;
+                    else
+                        Main.TotalScore += 7;
+                    break;
+                case 3:
+                    if (TestSwim50m())
+                        Main.TotalScore += 10;
+                    else
+                        Main.TotalScore += 7;
+                    break;
             }
         }
     }

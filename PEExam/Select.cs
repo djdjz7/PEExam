@@ -10,6 +10,12 @@ namespace PEExam
 {
     public partial class Select : Form
     {
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            e.Cancel = true; //取消关闭操作
+        }
+
         public Select()
         {
             InitializeComponent();

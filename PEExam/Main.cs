@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -8,9 +9,10 @@ namespace PEExam
 
     public partial class Main : Form
     {
+
         public int PointsAvaiLabel = 10, DaysAvailable = 100, TiringPointsAvaiLabel = 0;
 
-        public static int FlexMainIndex = 0, FlexExtraIndex = 0, PowerIndex = 0, SpeedIndex = 0;
+        public static int FlexMainIndex = 0, FlexExtraIndex = 0, PowerIndex = 0, SpeedIndex = 0, TotalScore = 0;
 
         public struct Possibilities
         {
@@ -241,16 +243,21 @@ namespace PEExam
             }
             DaysAvailable--;
             SyncAllNums();
+            if(DaysAvailable==0)
+            {
+                examTime = new ExamTime();
+                examTime.ShowDialog();
+                if(TotalScore<30)
+                    MessageBox.Show("混账东西，居然只考了" + TotalScore.ToString() + "分\n滚去签字！", "CP来了", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                    MessageBox.Show("很好，你得了30分","CP来了", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Application.Exit();
+            }
         }
 
         private void ShowPossibilities_Button_Click(object sender, EventArgs e)
         {
             ShowPossibilities();
-        }
-
-        private void ExamQuickTest_Click(object sender, EventArgs e)
-        {
-            examTime.ShowDialog();
         }
 
         private void ConfigExam_Button_Click(object sender, EventArgs e)
